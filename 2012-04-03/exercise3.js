@@ -87,6 +87,9 @@ floor = drawFloor(floor, [floorHeight], [-47,51.2-47], [-16,0.2]);
 floor = drawFloor(floor, [floorHeight-0.3], [-47,51-47], [-5,11]);
 floor = drawFloor(floor, [floorHeight-0.3], [-1,20], [-1,9]);
 
+//statue
+floor = drawFloor(floor, [floorHeight-0.1], [-49,0.5], [-14.5,0.5]);
+
 // steps
 var steps = drawSteps();
 

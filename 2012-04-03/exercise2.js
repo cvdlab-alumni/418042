@@ -89,6 +89,9 @@ floor = drawFloor(floor, [floorHeight], [-47,51.2-47], [-16,0.2]);
 floor = drawFloor(floor, [floorHeight-0.3], [-47,51-47], [-5,11]);
 floor = drawFloor(floor, [floorHeight-0.3], [-1,20], [-1,9]);
 
+//statue
+floor = drawFloor(floor, [floorHeight-0.1], [-49,0.5], [-14.5,0.5]);
+
 // steps
 var steps = drawSteps();
 
@@ -121,7 +124,6 @@ wall = drawWall(wall, [5.1,20.4,floorHeight], [wallHeight], [4], [0.1]);
 wall = drawWall(wall, [5,17.1,floorHeight], [wallHeight], [0.1], [5]);
 wall = drawWall(wall, [1,17,floorHeight], [wallHeight], [8], [0.1]);
 wall = drawWall(wall, [5,22,floorHeight], [wallHeight], [4], [0.1]);
-
 
 var bench = drawBench();
 
