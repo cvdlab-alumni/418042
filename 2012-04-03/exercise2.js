@@ -129,9 +129,4 @@ var columns = drawColumns();
 
 var roof = drawRoof();
 
-DRAW(columns);
-DRAW(bench);
-DRAW(wall);
-DRAW(steps);
-DRAW(floor);
-DRAW(roof);
+drawBuilding([columns,bench,wall,steps,floor,roof]);
