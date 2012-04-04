@@ -58,6 +58,17 @@ function drawColumns(){
 	]);
 }
 
+function drawRoof(){
+	return STRUCT([ 
+		SIMPLEX_GRID([ [-0.5,9.7],[-13.3,22.7-13.3],[-floorHeight,-wallHeight,0.2] ]),
+		SIMPLEX_GRID([ [-24,47-24],[-4,13],[-floorHeight,-wallHeight,0.2] ])
+	]); 
+}
+
+function drawBuilding(structs){
+	return DRAW(STRUCT(structs));
+}
+
 // floor
 var floor = STRUCT([]);
 
@@ -116,8 +127,11 @@ var bench = drawBench();
 
 var columns = drawColumns();
 
+var roof = drawRoof();
+
 DRAW(columns);
 DRAW(bench);
 DRAW(wall);
 DRAW(steps);
 DRAW(floor);
+DRAW(roof);
