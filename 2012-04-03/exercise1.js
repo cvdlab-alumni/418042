@@ -42,62 +42,69 @@ function drawGrid(struct,v1,v2,v3,v4) {
 
 }
 
+// draw a line
 function drawLine(struct,points){
 	return STRUCT([struct, POLYLINE(points)]);
 }
 
-var initStruct = STRUCT([]);
+//draw steps
+function drawSteps(){
+	var steps = STRUCT([]);
+	for (var i = 36; i <=39 ; i+=(3/8)) {
+		steps = drawLine(steps,[[i,1],[i,4]]);
+	};
+	return steps;
+}
 
-var mattonelle = STRUCT([]);
+function drawBuilding(structs){
+	return DRAW(structs);
+}
 
-//structN = drawGrid([],[],[],[]);
-struct1 = drawGrid(initStruct,[0,0],[1,0],[1,2],[0,2]);
-struct2 = drawGrid(struct1,[1,0],[39,0],[39,1],[1,1]);
-struct3 = drawGrid(struct2,[21,1],[36,1],[36,4],[21,4]);
-struct4 = drawGrid(struct3,[21,4],[52,4],[52,5],[21,5]);
-struct5 = drawGrid(struct4,[51,5],[52,5],[52,6],[51,6]);
-struct6 = drawGrid(struct5,[21,5],[47,5],[47,16],[21,16]);
-struct7 = drawGrid(struct6,[21,16],[39,16],[39,17],[21,17]);
-struct8 = drawGrid(struct7,[1,10],[21,10],[21,17],[1,17]);
-struct9 = drawGrid(struct8,[1,17],[9,17],[9,22],[1,22]);
+var floor = STRUCT([]);
+
+floor = drawGrid(floor,[0,0],[1,0],[1,2],[0,2]);
+floor = drawGrid(floor,[1,0],[39,0],[39,1],[1,1]);
+floor = drawGrid(floor,[21,1],[36,1],[36,4],[21,4]);
+floor = drawGrid(floor,[21,4],[52,4],[52,5],[21,5]);
+floor = drawGrid(floor,[51,5],[52,5],[52,6],[51,6]);
+floor = drawGrid(floor,[21,5],[47,5],[47,16],[21,16]);
+floor = drawGrid(floor,[21,16],[39,16],[39,17],[21,17]);
+floor = drawGrid(floor,[1,10],[21,10],[21,17],[1,17]);
+floor = drawGrid(floor,[1,17],[9,17],[9,22],[1,22]);
 
 
-var muro = STRUCT([]);
+var wall = STRUCT([]);
 
-struct10 = drawLine(struct9,[
+wall = drawLine(wall,[
 		[0.8,0.8],[8,0.8],[8,1],[1,1],[1,22],[9,22],[9,17],[9.2,17],[9.2,22.2],[0.8,22.2],[0.8,0.8]
 		]);
 
-struct11 = drawLine(struct10,[
+wall = drawLine(wall,[
 		[41.5,4.8],[51.2,4.8],[51.2,16.2],[37.5,16.2],[37.5,16],[51,16],[51,5],[41.5,5],[41.5,4.8]
 		]);
 
-struct12 = drawLine(struct11,[
+wall = drawLine(wall,[
 		[7.5,15],[26.5,15],[26.5,15.2],[7.5,15.2],[7.5,15]
 		]);
 
-struct13 = drawLine(struct12,[
+wall = drawLine(wall,[
 		[25.2,7.2],[33.8,7.2],[33.8,7.4],[25.2,7.4],[25.2,7.2]
 		]);
 
-struct14 = drawLine(struct13,[
+wall = drawLine(wall,[
 		[37.2,11.4],[42.5,11.4],[42.5,11.6],[37.2,11.6],[37.2,11.4]
 		]);
 
-struct15 = drawLine(struct14,[
+wall = drawLine(wall,[
 		[4.9,22],[4.9,17],[5.1,17],[5.1,22]
 		]);
 
-struct16 = drawLine(struct15,[
+wall = drawLine(wall,[
 		[5.1,20.4],[9,20.4],[9,20.6],[5.1,20.6]
 		]);
 
-DRAW(struct16);
 
-var scale = STRUCT([]);
+var steps = drawSteps();
 
-for (var i = 36; i <=39 ; i+=(3/8)) {
-	scale = drawLine(scale,[[i,1],[i,4]]);
-};
+var building2D = drawBuilding([floor,wall,steps]);
 
-DRAW(scale);
