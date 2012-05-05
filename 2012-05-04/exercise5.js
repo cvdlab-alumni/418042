@@ -12,7 +12,7 @@
 // WING
 //
 var wing = STRUCT([]);
-var domain1 = INTERVALS(1)(100);
+var domain1 = INTERVALS(1)(30);
 var domain2 = DOMAIN([[0,1],[0,1]])([10,10]);
 var controlPoints = [[0,1.8,0],[0,0.6,0.35],[0,0.7,0.3],[0,-0.8,-0.15],[0,-0.1,0],
 					[0,0,0.75],[0,0.4,0.3],[0,1,0.45],[0,1.3,0.2],[0,1.8,0]];
@@ -58,7 +58,7 @@ var fuselage = STRUCT([]);
 var p0 = [[0,0,-1.3],[1.3,0,-1.3],[1.8,0,0],[2,0,2.4],[0,0,2.4],[-2,0,2.4],
 	[-1.8,0,0],[-1.3,0,-1.3],[0,0,-1.3]];
 var c0 = BEZIER(S0)(p0);
-var domain1 = INTERVALS(1)(100);
+var domain1 = INTERVALS(1)(30);
 var p1 = p0.map(function (p) {return [p[0],p[1]-0.5,p[2]]});
 var c1 = BEZIER(S0)(p1);
 var p2 = p0.map(function (p) {return [p[0],p[1]-0.8,p[2]]});
@@ -190,4 +190,19 @@ stabilizers = T([1,2])([7,1])(stabilizers);
 
 var airplane = STRUCT([wing,otherWing,fuselage,stabilizers]);
 
+airplane = S([0,1,2])([0.5,0.5,0.5])(airplane);
+airplane = R([1,2])(PI/6)(airplane);
+airplane = T([1,2])([10,10])(airplane);
+
 DRAW(airplane);
+
+var pista = SIMPLEX_GRID([[0.3],[3,-1,3,-1,3,-1,3,-1,3,-1,3,-1,3,-1,3,-1,3,-1,3,-1],[0.101]])
+pista = T([1])([-20])(pista);
+pista = COLOR([0.99,0.99,0.99])(pista);
+
+var pista1 = SIMPLEX_GRID([[8],[40],[0.1]]);
+
+pista1 = T([0,1])([-4,-20])(pista1);
+
+DRAW(pista);
+DRAW(pista1);
