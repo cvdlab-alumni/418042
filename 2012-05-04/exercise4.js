@@ -44,6 +44,14 @@ var steccaTraslata = T([0,1,2])([3.3,1.3,0.22])(stecca);
 steccaTraslata = COLOR([84/255,84/255,84/255])(steccaTraslata);
 wing = STRUCT([wing,steccaTraslata]);
 
+var filo = POLYLINE([[3.3,1.3,0.22],[0,1.3-0.5,2.14]]);
+filo = COLOR([0,0,0])(filo);
+var filo2 = POLYLINE([[0,1.3,0.22],[3.3,1.3-0.5,2.14]]);
+filo2 = COLOR([0,0,0])(filo2);
+var fili = STRUCT([filo,filo2]);
+fili = STRUCT([fili,T([1,2])([-1,0.13])(fili)]);
+wing = STRUCT([wing,fili]);
+
 otherWing = S([0])([-1])(wing);
 
 //
