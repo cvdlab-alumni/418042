@@ -52,25 +52,47 @@ var wing = MAP(wingMapping)(domain2);
 
 DRAW(wing);
 
+
+var secondWing = T([1,2])([-0.5,2])(wing);
+DRAW(secondWing);
+
+
+var steccaControlPoints = [[0,0.1,0],[0.1,0,0],[0,-0.1,0],[-0.1,0,0],[0,0.1,0]];
+var c3 = BEZIER(S0)(steccaControlPoints);
+var steccaControlPoints = steccaControlPoints.map(function (p){return [p[0],p[1]-0.5,p[2]+1.82]});
+var c4 = BEZIER(S0)(steccaControlPoints);
+var steccaMapping = BEZIER(S1)([c3,c4]);
+var stecca = MAP(steccaMapping)(domain2);
+
+var steccaTraslata = T([0,1,2])([3.3,0.3,0.35])(stecca);
+DRAW(steccaTraslata);
+
+var steccaControlPoints = [[0,0.1,-0.05],[0.1,0,0],[0,-0.1,0],[-0.1,0,0],[0,0.1,-0.05]];
+var c3 = BEZIER(S0)(steccaControlPoints);
+var steccaControlPoints = steccaControlPoints.map(function (p){return [p[0],p[1]-0.5,p[2]+1.91]});
+var c4 = BEZIER(S0)(steccaControlPoints);
+var steccaMapping = BEZIER(S1)([c3,c4]);
+var stecca = MAP(steccaMapping)(domain2);
+
+var steccaTraslata = T([0,1,2])([3.3,1.3,0.22])(stecca);
+DRAW(steccaTraslata);
+
+
+
+
+
+/*
+
+//per disegnare la punta
+
 var p2 = controlPoints.map(function (p){return [p[0]+4,p[1],p[2]]});
 var c2 = BEZIER(S0)(p2);
-//var p3 = p2.map(function (p){return [p[0]+(p[0]*0.5/4.5),p[1]-(p[0]*0.5/4.5),p[2]]});
 var p3 = p2.map(function (p){return [p[0]+0.5,p[1],p[2]]});
 var c3 = BEZIER(S0)(p3);
 
 var wingMapping = BEZIER(S1)([c2,c3]);
 var wing = MAP(wingMapping)(domain2);
 
-
-/*
-var mappingPunta = function(p){
-	var x = p[0];
-	var y = p[1];
-	var z = p[2];
-	return [x, y-(x-4), z];
-}
-*/
-
-
-//DRAW(SKELETON(1)(mappedWing));
 DRAW(wing);
+
+*/
