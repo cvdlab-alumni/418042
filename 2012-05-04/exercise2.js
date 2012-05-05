@@ -74,7 +74,7 @@ var tailControlPoints = [[0,0,-1],
 	[-1,0,-1],[-1,0,-1],[-1,0,-1],[-1,0,-1],[-1,0,-1],[-1,0,-1],[-1,0,-1],
 	[0,0,-1]];
 
-var p8 = tailControlPoints.map(function (p) {return [p[0]*0.7,p[1]+6.3,p[2]*0.7+0.4]});
+var p8 = tailControlPoints.map(function (p) {return [p[0]*0.69,p[1]+6.3,p[2]*0.69+0.4]});
 var c8 = BEZIER(S0)(p8);
 
 var bodyMapping = BEZIER(S1)([c7,c8]);
@@ -96,4 +96,4 @@ fuselage = STRUCT([fuselage,tail]);
 
 fuselage = SCALE([0,1,2])([0.8,0.8,0.8])(fuselage);
 
-DRAW(fuselage);
+DRAW();
