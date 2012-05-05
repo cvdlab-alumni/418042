@@ -74,7 +74,7 @@ var tailControlPoints = [[0,0,-1],
 	[-1,0,-1],[-1,0,-1],[-1,0,-1],[-1,0,-1],[-1,0,-1],[-1,0,-1],[-1,0,-1],
 	[0,0,-1]];
 
-var p8 = tailControlPoints.map(function (p) {return [p[0]*0.69,p[1]+6.3,p[2]*0.69+0.4]});
+var p8 = tailControlPoints.map(function (p) {return [p[0]*0.65,p[1]+6.4,p[2]*0.65+0.4]});
 var c8 = BEZIER(S0)(p8);
 
 var bodyMapping = BEZIER(S1)([c7,c8]);
@@ -96,4 +96,35 @@ fuselage = STRUCT([fuselage,tail]);
 
 fuselage = SCALE([0,1,2])([0.8,0.8,0.8])(fuselage);
 
-DRAW();
+// elica
+
+var e1 = [[-0.005,0,0],[-0.3,0,-2.5],[0,0,-3.5],[0.3,0,-2.5],[0.005,0,0],[-0.005,0,0]];
+var e12 = [[0,0,0]];
+var ce1 = BEZIER(S0)(e1);
+var ce12 = BEZIER(S0)(e12);
+
+
+var e2 = e1.map(function (p) {return [p[0],p[1]+0.2,p[2]]});
+var e22 = [[0,0,0]];
+var ce2 = BEZIER(S0)(e2);
+var ce22 = BEZIER(S0)(e22);
+
+
+var elicaMapping = BEZIER(S1)([ce1,ce2]);
+var coverElica1 = BEZIER(S1)([ce1,ce12]);
+var coverElica2 = BEZIER(S1)([ce2,ce22]);
+
+var elica = MAP(elicaMapping)(domain2);
+var elicaCover1 = MAP(coverElica1)(domain2);
+var elicaCover2 = MAP(coverElica2)(domain2);
+
+var elica = STRUCT([elica,elicaCover1,elicaCover2]);
+
+elica = T([1])([-1])(elica);
+var secondaElica = R([0,2])(PI)(elica);
+
+
+DRAW(secondaElica);
+DRAW(elica);
+
+DRAW(fuselage);
