@@ -44,9 +44,7 @@ var steccaTraslata = T([0,1,2])([3.3,1.3,0.22])(stecca);
 steccaTraslata = COLOR([84/255,84/255,84/255])(steccaTraslata);
 wing = STRUCT([wing,steccaTraslata]);
 
-DRAW(wing);
 otherWing = S([0])([-1])(wing);
-DRAW(otherWing);
 
 //
 // FUSELAGE
@@ -132,7 +130,6 @@ elica = STRUCT([elica,secondaElica]);
 
 fuselage = STRUCT([fuselage,elica]);
 fuselage = T([2])([0.5])(fuselage);
-DRAW(fuselage);
 
 
 // timone
@@ -186,4 +183,7 @@ stabilizers = COLOR([207/255,181/255,59/255])(stabilizers);
 
 stabilizers = T([1,2])([7,1])(stabilizers);
 
+DRAW(wing);
+DRAW(otherWing);
+DRAW(fuselage);
 DRAW(stabilizers);
