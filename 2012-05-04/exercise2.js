@@ -9,7 +9,7 @@ var fuselage = STRUCT([]);
 var p0 = [[0,0,-1.3],[1.3,0,-1.3],[1.8,0,0],[2,0,2.4],[0,0,2.4],[-2,0,2.4],
 	[-1.8,0,0],[-1.3,0,-1.3],[0,0,-1.3]];
 var c0 = BEZIER(S0)(p0);
-var domain1 = INTERVALS(1)(100);
+var domain1 = INTERVALS(1)(30);
 var p1 = p0.map(function (p) {return [p[0],p[1]-0.5,p[2]]});
 var c1 = BEZIER(S0)(p1);
 var p2 = p0.map(function (p) {return [p[0],p[1]-0.8,p[2]]});
@@ -30,6 +30,7 @@ var backCockPitMapping = BEZIER(S1)([c0,c4,c5]);
 var backCockPit = MAP(backCockPitMapping)(domain2);
 fuselage = STRUCT([fuselage,backCockPit]);
 
+var domain2 = DOMAIN([[0,1],[0,1]])([30,1]);
 //middle
 var domain3 = DOMAIN([[0,1],[0,1]])([30,1]);
 var p6 = p5.map(function (p) {return [p[0]*0.9,p[1]+1,p[2]*0.9]});
@@ -80,9 +81,9 @@ var ce22 = BEZIER(S0)(e22);
 var elicaMapping = BEZIER(S1)([ce1,ce2]);
 var coverElica1 = BEZIER(S1)([ce1,ce12]);
 var coverElica2 = BEZIER(S1)([ce2,ce22]);
-var elica = MAP(elicaMapping)(domain2);
-var elicaCover1 = MAP(coverElica1)(domain2);
-var elicaCover2 = MAP(coverElica2)(domain2);
+var elica = MAP(elicaMapping)(domain3);
+var elicaCover1 = MAP(coverElica1)(domain3);
+var elicaCover2 = MAP(coverElica2)(domain3);
 var elica = STRUCT([elica,elicaCover1,elicaCover2]);
 elica = COLOR([84/255,84/255,84/255])(elica);
 elica = T([1])([-1])(elica);

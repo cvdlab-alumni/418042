@@ -53,7 +53,7 @@ var fuselage = STRUCT([]);
 var p0 = [[0,0,-1.3],[1.3,0,-1.3],[1.8,0,0],[2,0,2.4],[0,0,2.4],[-2,0,2.4],
 	[-1.8,0,0],[-1.3,0,-1.3],[0,0,-1.3]];
 var c0 = BEZIER(S0)(p0);
-var domain1 = INTERVALS(1)(100);
+var domain1 = INTERVALS(1)(30);
 var p1 = p0.map(function (p) {return [p[0],p[1]-0.5,p[2]]});
 var c1 = BEZIER(S0)(p1);
 var p2 = p0.map(function (p) {return [p[0],p[1]-0.8,p[2]]});
@@ -65,6 +65,8 @@ var cockPitMapping = BEZIER(S1)([c0,c1,c2,c3]);
 var cockPit = MAP(cockPitMapping)(domain2);
 fuselage = STRUCT([fuselage,cockPit]);
 //back cockpit
+var domain2 = DOMAIN([[0,1],[0,1]])([30,1]);
+
 var p4 = p0.map(function (p) {return [p[0],p[1]+0.1,p[2]]});
 var c4 = BEZIER(S0)(p4);
 var p5 = p0.map(function (p) {return [p[0]*0.9,p[1]+1.3,p[2]*0.9+0.05]});
