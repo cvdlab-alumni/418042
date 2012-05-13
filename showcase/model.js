@@ -85,6 +85,10 @@ profile = BEZIER(S0)(ctrlPoints);
 mapping = ROTATIONAL_SURFACE(profile);
 var part08 = MAP(mapping)(domain);
 
-var bishop = STRUCT([base,part01,part02,part03,part04,part05,part06,part07,part08]);
+var scmodel = STRUCT([base,part01,part02,part03,part04,part05,part06,part07,part08]);
 
-DRAW(COLOR([64/255,64/255,64/255])(bishop));
+scmodel = COLOR([128/255,128/255,128/255])(scmodel);
+
+scmodel = S([0,1,2])([0.5,0.5,0.5])(scmodel);
+
+DRAW(scmodel);
