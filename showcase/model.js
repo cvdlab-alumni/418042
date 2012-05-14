@@ -2,6 +2,8 @@
 
 // dominio rotazione
 var domain = DOMAIN([[0,1],[0,2*PI]])([50,50]);
+var littleDomain = DOMAIN([[0,1],[0,2*PI]])([1,50]);
+var detailedDomain = DOMAIN([[0,1],[0,2*PI]])([60,60]);
 
 // base
 var ctrlPoints = [[2.3,0,0],[2.3,0,0.4]];
@@ -9,11 +11,17 @@ var profile = BEZIER(S0)(ctrlPoints);
 var mapping = ROTATIONAL_SURFACE(profile);
 var base = MAP(mapping)(domain);
 
+// bottom
+var ctrlPoints = [[0,0,0],[2.3,0,0]];
+var profile = BEZIER(S0)(ctrlPoints);
+var mapping = ROTATIONAL_SURFACE(profile);
+var bottom = MAP(mapping)(littleDomain);
+
 // part01
 ctrlPoints = [[2.3,0,0.4],[2.1,0,0.6]];
 profile = BEZIER(S0)(ctrlPoints);
 mapping = ROTATIONAL_SURFACE(profile);
-var part01 = MAP(mapping)(domain);
+var part01 = MAP(mapping)(littleDomain);
 
 // part02
 ctrlPoints = [[2.1,0,0.6],[2.7,0,1],[1.5,0,1.4],[1.5,0,2.4]];
@@ -25,7 +33,7 @@ var part02 = MAP(mapping)(domain);
 ctrlPoints = [[1.5,0,2.4],[1.3,0,2.6]];
 profile = BEZIER(S0)(ctrlPoints);
 mapping = ROTATIONAL_SURFACE(profile);
-var part03 = MAP(mapping)(domain);
+var part03 = MAP(mapping)(littleDomain);
 
 // part04
 ctrlPoints = [[1.3,0,2.6],[0.9,0,3.5],[0.8,0,5.2]];
@@ -46,11 +54,10 @@ mapping = ROTATIONAL_SURFACE(profile);
 var part06 = MAP(mapping)(domain);
 
 // part07 con "taglio"
-domainDetail = DOMAIN([[0,1],[0,2*PI]])([60,60]);
 ctrlPoints = [[1,0,6.7],[1.9,0,7.7],[0.5,0,8.7],[0.4,0,9.5]];
 profile = BEZIER(S0)(ctrlPoints);
 mapping = ROTATIONAL_SURFACE(profile);
-var part07 = MAP(mapping)(domainDetail);
+var part07 = MAP(mapping)(detailedDomain);
 
 var cut = function (p) {
 
@@ -85,10 +92,6 @@ profile = BEZIER(S0)(ctrlPoints);
 mapping = ROTATIONAL_SURFACE(profile);
 var part08 = MAP(mapping)(domain);
 
-var scmodel = STRUCT([base,part01,part02,part03,part04,part05,part06,part07,part08]);
-
+var scmodel = STRUCT([base,bottom,part01,part02,part03,part04,part05,part06,part07,part08]);
 scmodel = COLOR([128/255,128/255,128/255])(scmodel);
-
 scmodel = S([0,1,2])([0.5,0.5,0.5])(scmodel);
-
-DRAW(scmodel);
