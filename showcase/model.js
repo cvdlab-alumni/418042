@@ -12,9 +12,9 @@ var mapping = ROTATIONAL_SURFACE(profile);
 var base = MAP(mapping)(domain);
 
 // bottom
-var ctrlPoints = [[0,0,0],[2.3,0,0]];
-var profile = BEZIER(S0)(ctrlPoints);
-var mapping = ROTATIONAL_SURFACE(profile);
+ctrlPoints = [[0,0,0],[2.3,0,0]];
+profile = BEZIER(S0)(ctrlPoints);
+mapping = ROTATIONAL_SURFACE(profile);
 var bottom = MAP(mapping)(littleDomain);
 
 // part01
