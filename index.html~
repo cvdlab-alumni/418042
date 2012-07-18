@@ -24,27 +24,61 @@
 
         <section id="downloads" class="clearfix">
           <a href="https://github.com/H4ml3t/Villa-Palladiana/zipball/master" id="download-zip" class="button"><span>Download .zip</span></a>
-          <a href="https://github.com/H4ml3t/Villa-Palladiana/tarball/master" id="download-tar-gz" class="button"><span>View on Plasm</span></a>
+          <a href="http://cvdlab-cg.github.com/418042/plasm.js/" id="download-tar-gz" class="button"><span>View on Plasm</span></a>
           <a href="https://github.com/H4ml3t/Villa-Palladiana" id="view-on-github" class="button"><span>View on GitHub</span></a>
         </section>
 
         <hr>
 
         <section id="main_content">
-          <h3>Welcome to GitHub Pages.</h3>
 
-<p>This automatic page generator is the easiest way to create beautiful pages for all of your projects. Author your page content here using GitHub Flavored Markdown, select a template crafted by a designer, and publish. After your page is generated, you can check out the new branch:</p>
+<p><strong>Villa Badoer</strong> is a villa located in the Fratta Polesine in the Veneto region. 
+Called "la Badoera", was designed for the noble Francesco Badoer by the architect <strong>Andrea Palladio</strong> in 1554 and built between the years 1556-1563. 
+This villa had the function of supporting field's administration and showing the economic prestige of Francesco Badoer.
+The villa, since 1996, has been part of the "UNESCO World Heritage Site".</p>
 
-<pre><code>$ cd your_repo_root/repo_name
-$ git fetch origin
-$ git checkout gh-pages
-</code></pre>
+<pre><div style="text-align: center"><img src="images/img01.jpg" width="220" height="164" />      <img src="images/img02.jpg" width="220" height="164" /></div></pre>
 
-<p>If you're using the GitHub for Mac, simply sync your repository and you'll see the new branch.</p>
+<p>The project in plasm focuses on representing the main building with particular attenction for the details of his structure components (rather than his forniture).
+Every little parts, from the steps to the capitals, are designed with the aim to be as soon as possible similar to the original one.</p>
 
-<h3>Designer Templates</h3>
+<pre><div style="text-align: center"><img src="images/img01.jpg" width="220" height="164"  />      <img src="images/img02.jpg" width="220" height="164" /></div></pre>
 
-<p>We've crafted some handsome templates for you to use. Go ahead and continue to layouts to browse through them. You can easily go back to edit your page before publishing. After publishing your page, you can revisit the page generator and switch to another theme. Your Page content will be preserved if it remained markdown format.</p>
+<h3>Components</h3>
+
+<p>Hierarchical decomposition:
+<ol>
+	<li><ul>Base
+<li>foundations</li>
+<li>steps</li>
+<li>rails</li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+</ol><ul>Base
+<li>foundations</li>
+<li>steps</li>
+<li>rails</li>
+</br>
+Building
+<li>walls</li>
+<li>ledge</li>
+<li>columns</li>
+</br>
+Top
+<li>tympanum</li>
+<li>guttae</li>
+<li>roof</li>
+</br>
+Components
+</ul></p>
+
+<h3>Plants & Documentation</h3>
+
+<p>Though it's possible to find some plants on the web that isn't helpfull because of their incongruence between them. No proportion scale can be found and building's draw are never the same (see image below).
+As consequence the proportion factor is chosen with large approssimation belonging it from the pictures. Morover these images are most of all photos taken from big distances, making impossible to reconstract a precise model.</p>
+
+<pre><div style="text-align: center"><img src="images/img03.jpg" width="220" height="164" />      <img src="images/img04.jpg" width="220" height="164" /></div></pre>
 
 <h3>Rather Drive Stick?</h3>
 
