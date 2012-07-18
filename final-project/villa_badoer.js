@@ -162,10 +162,10 @@ function Colors(){};
 
 var colors = new Colors();
 
-colors.foundation = [200/255,230/255,240/255];
-colors.hue = [1/255,230/255,240/255];
-colors.baseFrontLedge = [1/255,200/255,240/255];
-colors.roof = [100/255,200/255,30/255];
+colors.foundation = [83/255,59/255,44/255];
+colors.hue = [1,1,0.9];
+colors.baseFrontLedge = [185/255,185/255,168/255];
+colors.roof = [114/255,78/255,61/255];
 
 
 
@@ -1747,14 +1747,14 @@ function drawVilla(){
 	drawer.addLedge(ledge());
 	drawer.drawLedge();
 
-	drawer.addTympanum(tympanum());
-	drawer.drawTympanum();
+	//drawer.addTympanum(tympanum());
+	//drawer.drawTympanum();
 
-	drawer.addColums(colums());
-	drawer.drawColums();
+	//drawer.addColums(colums());
+	//drawer.drawColums();
 
-	drawer.addGuttae(guttae());
-	drawer.drawGuttae();
+	//drawer.addGuttae(guttae());
+	//drawer.drawGuttae();
 
 	drawer.addBuildingRoof(buildingRoof());
 	drawer.drawBuildingRoof();
