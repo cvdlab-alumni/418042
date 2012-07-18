@@ -1747,19 +1747,19 @@ function drawVilla(){
 	drawer.addLedge(ledge());
 	drawer.drawLedge();
 
-	//drawer.addTympanum(tympanum());
-	//drawer.drawTympanum();
+	drawer.addTympanum(tympanum());
+	drawer.drawTympanum();
 
-	//drawer.addColums(colums());
-	//drawer.drawColums();
+	drawer.addColums(colums());
+	drawer.drawColums();
 
-	//drawer.addGuttae(guttae());
-	//drawer.drawGuttae();
+	drawer.addGuttae(guttae());
+	drawer.drawGuttae();
 
 	drawer.addBuildingRoof(buildingRoof());
 	drawer.drawBuildingRoof();
 
-	//drawer.all();
+	//drawer.drawAll();
 }
 
 drawVilla();
