@@ -27,7 +27,7 @@
           <a href="http://cvdlab-cg.github.com/418042/plasm.js/" id="download-tar-gz" class="button"><span>View on Plasm</span></a>
           <a href="https://github.com/H4ml3t/Villa-Palladiana" id="view-on-github" class="button"><span>View on GitHub</span></a>
         </section>
-
+          <h1>chi mi frega view on plasm è morto!</h1>
         <hr>
 
         <section id="main_content">
@@ -47,30 +47,22 @@ Every little parts, from the steps to the capitals, are designed with the aim to
 <h3>Components</h3>
 
 <p>Hierarchical decomposition:
-<ol>
-	<li><ul>Base
-<li>foundations</li>
-<li>steps</li>
-<li>rails</li></li>
-	<li></li>
-	<li></li>
-	<li></li>
-</ol><ul>Base
+<ul>1. Base
 <li>foundations</li>
 <li>steps</li>
 <li>rails</li>
 </br>
-Building
+2. Building
 <li>walls</li>
 <li>ledge</li>
 <li>columns</li>
 </br>
-Top
+3. Top
 <li>tympanum</li>
 <li>guttae</li>
 <li>roof</li>
 </br>
-Components
+4. Components
 </ul></p>
 
 <h3>Plants & Documentation</h3>
