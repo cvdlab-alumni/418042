@@ -629,8 +629,6 @@ function baseComponents(){
 
 	var modelMullionsRight = T([1])([3.46*p])(S([1])([-1])(modelMullionsLeft));
 
-	modelList = STRUCT([modelList,modelMullionsLeft,modelMullionsRight]);
-
 	// WALLS
 
     var wallsLeft = STRUCT([
@@ -646,9 +644,7 @@ function baseComponents(){
 
 	var wallsRight = T([1])([3.46*p])(S([1])([-1])(wallsLeft));
 
-	// fare porta !!!
-
-	return COLOR(colors.hue)(STRUCT([modelList, wallsLeft, wallsRight]));
+	return (STRUCT([modelList, modelMullionsLeft, modelMullionsRight, wallsLeft, wallsRight])).color(colors.hue);
 
 
 }
@@ -759,7 +755,7 @@ function buildingWall(){
 						lateralWall, T([1])([3.46*p])(S([1])([-1])(lateralWall)),
 						]);
 
-	return COLOR(colors.hue)(STRUCT([floor,lodgeFloor,basement,topProjection,walls])); // TODO stringere porta
+	return (STRUCT([floor,lodgeFloor,basement,topProjection,walls])).color(colors.hue); // TODO stringere porta
 
 }
 
@@ -1427,16 +1423,14 @@ function colums(){
 			(S([0])([-1])(centerCapital)).translate([0],[0.11*p]),
 		]);
 
-	return COLOR(colors.hue)(
-			STRUCT([
+	return (STRUCT([
 				singleColumn.translate([0,1,2],[2.085*p,1.05*p,(h1+h2+10*hs)*p]),
 				T([1])([0.243*p])(singleColumn),
 				T([1])([0.486*p])(singleColumn),
 				T([1])([0.764*p])(singleColumn),
 				T([1])([1.007*p])(singleColumn),
 				T([1])([1.25*p])(singleColumn)
-			])
-		);
+			])).color(colors.hue);
 
 }
 
@@ -1668,14 +1662,13 @@ function guttae(){
 
 		]);
 
-	return COLOR(colors.hue)(STRUCT([
+	return (STRUCT([
 			guttaeTympanum,
 			guttaeLateralLeft,
 			T([1])([3.46*p])(S([1])([-1])(guttaeLateralLeft)),
 			guttaeOrizontal
-		])
-	);
-
+		])).color(colors.hue);
+	
 }
 
 
@@ -2029,10 +2022,103 @@ function buildingComponents(){
 
 		]);
 
+	
+
+	// chimneys
+	height= 1.22;
+
+	function getCover(p,controlPoints){
+		return STRUCT([
+					TRIANGLE_DOMAIN(1,[PROD([p,controlPoints[0]]),PROD([p,controlPoints[1]]),PROD([p,controlPoints[3]])]),
+					TRIANGLE_DOMAIN(1,[PROD([p,controlPoints[1]]),PROD([p,controlPoints[3]]),PROD([p,controlPoints[2]])])
+				]);
+
+	}
+
+	var chimneyProfile1 = NUBS(S0)(2)([0, 0, 0, 1, 2,2,2])([[0.09*p,0.02*p,(height+0.05)*p],[0.09*p,0.02*p,(height+0.1)*p],[0.21*p,0.02*p,(height+0.1)*p],[0.21*p,0.02*p,(height+0.05)*p]]);
+	var chimneyProfile2 = NUBS(S0)(2)([0, 0, 0, 1, 2,2,2])([[0.09*p,0.1*p,(height+0.05)*p],[0.09*p,0.1*p,(height+0.1)*p],[0.21*p,0.1*p,(height+0.1)*p],[0.21*p,0.1*p,(height+0.05)*p]]);
+
+	var coverChimney = BEZIER(S1)([chimneyProfile1,chimneyProfile2]);
+	coverChimney = MAP(coverChimney)(domains.depthCapitalDomain);
+
+	var fakePoint = BEZIER(S0)([[0.195*p,0.02*p,(height+0.05)*p]]);
+	var cover1 = BEZIER(S1)([chimneyProfile1,fakePoint]);
+	cover1 = MAP(cover1)(domains.depthCapitalDomain);
+
+	fakePoint = BEZIER(S0)([[0.195*p,0.1*p,(height+0.05)*p]]);
+	var cover2 = BEZIER(S1)([chimneyProfile2,fakePoint]);
+	cover2 = MAP(cover2)(domains.depthCapitalDomain);
+
+	var bigChimney = STRUCT([
+			(SIMPLEX_GRID([[0.26*p],[0.06*p],[(11*hs)*p]])).color(colors.hue),
+			(SIMPLEX_GRID([[-0.09*p,0.12*p],[-0.02*p,0.08*p],[(height+0.02)*p]])).color(colors.hue),
+			(getCover(p,[[0,0,11*hs],[0.26,0,(11*hs)],[0.21,0.02,21*hs],[0.09,0.02,21*hs]])).color(colors.hue),
+			(getCover(p,[[0.26,0,(11*hs)],[0.26,0.06,11*hs],[0.21,0.06,21*hs],[0.21,0.02,21*hs]])).color(colors.hue),
+			(getCover(p,[[0,0,11*hs],[0.09,0.02,(21*hs)],[0.09,0.06,21*hs],[0,0.06,11*hs]])).color(colors.hue),
+
+			(SIMPLEX_GRID([[-0.09*p,0.0075*p],[-0.02*p,0.08*p],[-(height)*p,0.045*p]])).color(colors.hue),
+			(SIMPLEX_GRID([[-0.1025*p, 0.005*p],[-0.02*p,0.08*p],[-(height)*p,0.045*p]])).color(colors.hue),
+			(SIMPLEX_GRID([[-0.1125*p, 0.005*p],[-0.02*p,0.08*p],[-(height)*p,0.045*p]])).color(colors.hue),
+			(SIMPLEX_GRID([[-0.1225*p, 0.005*p],[-0.02*p,0.08*p],[-(height)*p,0.045*p]])).color(colors.hue),
+			(SIMPLEX_GRID([[-0.1325*p, 0.005*p],[-0.02*p,0.08*p],[-(height)*p,0.045*p]])).color(colors.hue),
+			(SIMPLEX_GRID([[-0.1425*p, 0.005*p],[-0.02*p,0.08*p],[-(height)*p,0.045*p]])).color(colors.hue),
+			(SIMPLEX_GRID([[-0.1525*p, 0.005*p],[-0.02*p,0.08*p],[-(height)*p,0.045*p]])).color(colors.hue),
+			(SIMPLEX_GRID([[-0.1625*p, 0.005*p],[-0.02*p,0.08*p],[-(height)*p,0.045*p]])).color(colors.hue),
+			(SIMPLEX_GRID([[-0.1725*p, 0.005*p],[-0.02*p,0.08*p],[-(height)*p,0.045*p]])).color(colors.hue),
+			(SIMPLEX_GRID([[-0.1825*p, 0.005*p],[-0.02*p,0.08*p],[-(height)*p,0.045*p]])).color(colors.hue),
+			(SIMPLEX_GRID([[-0.1925*p, 0.005*p],[-0.02*p,0.08*p],[-(height)*p,0.045*p]])).color(colors.hue),
+			(SIMPLEX_GRID([[-0.2025*p,0.0075*p],[-0.02*p,0.08*p],[-(height)*p,0.045*p]])).color(colors.hue),
+
+			(SIMPLEX_GRID([[-0.09*p,0.12*p],[-0.02*p,0.08*p],[-(height+0.045)*p,0.005*p]])).color(colors.hue),
+			coverChimney.color(colors.hue),
+			cover1.color(colors.hue),
+			cover2.color(colors.hue),
+		]);
+
+	bigChimney.translate([0,1,2],[1.46*p,0.36*p,(h1+h2)*p]);
+
+	chimneyProfile1 = NUBS(S0)(2)([0, 0, 0, 1, 2,2,2])([[0.07*p,0.03*p,(height+0.025)*p],[0.07*p,0.03*p,(height+0.06)*p],[0.14*p,0.03*p,(height+0.06)*p],[0.14*p,0.03*p,(height+0.025)*p]]);
+	chimneyProfile2 = NUBS(S0)(2)([0, 0, 0, 1, 2,2,2])([[0.07*p,0.09*p,(height+0.025)*p],[0.07*p,0.09*p,(height+0.06)*p],[0.14*p,0.09*p,(height+0.06)*p],[0.14*p,0.09*p,(height+0.025)*p]]);
+
+	coverChimney = BEZIER(S1)([chimneyProfile1,chimneyProfile2]);
+	coverChimney = MAP(coverChimney)(domains.depthCapitalDomain);
+
+	fakePoint = BEZIER(S0)([[0.105*p,0.03*p,(height+0.025)*p]]);
+	cover1 = BEZIER(S1)([chimneyProfile1,fakePoint]);
+	cover1 = MAP(cover1)(domains.depthCapitalDomain);
+
+	fakePoint = BEZIER(S0)([[0.105*p,0.09*p,(height+0.025)*p]]);
+	cover2 = BEZIER(S1)([chimneyProfile2,fakePoint]);
+	cover2 = MAP(cover2)(domains.depthCapitalDomain);
+
+	var littleChimney = STRUCT([
+			(SIMPLEX_GRID([[0.16*p],[-0.02*p,0.04*p],[(11*hs)*p]])).color(colors.hue),
+			(SIMPLEX_GRID([[-0.07*p,0.07*p],[-0.03*p,0.06*p],[(height)*p]])).color(colors.hue),
+			(getCover(p,[[0,0.02,11*hs],[0.07,0.03,(21*hs)],[0.07,0.06,21*hs],[0,0.06,11*hs]])).color(colors.hue),
+			(getCover(p,[[0,0.02,11*hs],[0.16,0.02,11*hs],[0.14,0.03,21*hs],[0.07,0.03,21*hs]])).color(colors.hue),
+			(getCover(p,[[0.16,0.02,11*hs],[0.16,0.06,11*hs],[0.14,0.06,21*hs],[0.14,0.03,21*hs]])).color(colors.hue),
+
+			(SIMPLEX_GRID([[-0.07*p,0.0075*p],[-0.03*p,0.06*p],[-(height)*p,0.02*p]])).color(colors.hue),
+			(SIMPLEX_GRID([[-0.0825*p, 0.005*p],[-0.03*p,0.06*p],[-(height)*p,0.02*p]])).color(colors.hue),
+			(SIMPLEX_GRID([[-0.0925*p, 0.005*p],[-0.03*p,0.06*p],[-(height)*p,0.02*p]])).color(colors.hue),
+			(SIMPLEX_GRID([[-0.1025*p, 0.005*p],[-0.03*p,0.06*p],[-(height)*p,0.02*p]])).color(colors.hue),
+			(SIMPLEX_GRID([[-0.1125*p, 0.005*p],[-0.03*p,0.06*p],[-(height)*p,0.02*p]])).color(colors.hue),
+			(SIMPLEX_GRID([[-0.1225*p, 0.005*p],[-0.03*p,0.06*p],[-(height)*p,0.02*p]])).color(colors.hue),
+			(SIMPLEX_GRID([[-0.1325*p,0.0075*p],[-0.03*p,0.06*p],[-(height)*p,0.02*p]])).color(colors.hue),
+			(SIMPLEX_GRID([[-0.07*p,0.07*p],[-0.03*p,0.06*p],[-(height+0.02)*p,0.005*p]])).color(colors.hue),
+			coverChimney.color(colors.hue),
+			cover1.color(colors.hue),
+			cover2.color(colors.hue),
+
+		]);
+
+	littleChimney.translate([0,1,2],[0.86*p,0.36*p,(h1+h2)*p]);
 
 	return STRUCT([
 			T([0,1,2])([0.42*p,1.656*p,(h1+h2+10*hs)*p])(S([0])([-1])(middleWindow)), // central back door
 			leftComponents,
+			littleChimney,
+			bigChimney,
 			T([1])([3.46*p])(S([1])([-1])(leftComponents))
 		]);
 
