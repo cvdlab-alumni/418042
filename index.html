@@ -85,21 +85,31 @@ This makes codes much more "light" even with a more defined domain. For the mull
 a function that generats a single mullion with a specific height using <code>ROTATIONAL_SURFACE</code>.   
 </p>
 
-<pre><div style="text-align: center"><img src="images/base.png" width="50%" height="50%" alt="" />
+<pre><div style="text-align: center"><img src="images/base.png" width="70%" height="70%" alt="" />
+<code>base view</code>
+
+<img src="images/lateral_steps.png" width="70%" height="70%" alt="" />
+<code>lateral steps</code>
 
 <img src="images/steps.png" width="192" height="144" alt="" />     <img src="images/steps_real.png" width="35%" height="35%" alt="" />
+<code>steps</code>
 
 <img src="images/mullion.png" width="175" height="182" alt="" />     <img src="images/mullion_real.jpg" width="217" height="161" alt="" />
+<code>mullions</code>
 
-<img src="images/pillar.png" width="324" height="457" alt="" />
+<img src="images/pillar.png" width="80%" height="70%" alt="" />
+<code>pillar, mullion and rails</code>
+
+<img src="images/pillar_real.png" width="80%" height="80%" alt="" />
 </div></pre>
 
 <h3>Building</h3>
 
 <p>
 The central part is composed by walls, columns and the ledge all around the building. For a single wall is used 
-the function <code>TRIANGOLAR_DOMAIN</code> two times. For the ledge it's used a <code>NUBS</code> cerve to create the profile
-and a <code>BEZIER</code> function to generate the entire ledge. A single column is drawn using NUBS and ROTATIONAL_SURFACE and replicated.
+the function <code>TRIANGOLAR_DOMAIN</code> two times. For the ledge it's used a <code>NUBS</code> curve to create the profile
+and a <code>BEZIER</code> function to generate the entire ledge.
+</br>A single column is drawn using NUBS and ROTATIONAL_SURFACE and replicated.
 The capital is composed in two part each with two spiral. This spiral is obtained using the function <code>RULED_SURFACE</code>
  that shaps a NUBS profile with spiral's points. To join the two spiral obtained is used a BEZIER surface that tighs in the middle.
  To join the two parts is used a BEZIER.</p>
@@ -108,33 +118,152 @@ The capital is composed in two part each with two spiral. This spiral is obtaine
 <pre>
 <div style="text-align: center">
 <img src="images/building.png" width="50%" height="50%" alt="" />
+<code>walls + ledge</code>
 
 <img src="images/ledge.png" width="50%" height="50%" alt="" />
+<code>ledge profile</code>
 
 <img src="images/colums.png" width="70%" height="70%" alt="" />
+<code>columns</code>
 
 <img src="images/capreal.png" width="410" height="258" alt="" />
 
 <img src="images/basereal.png" width="312" height="219" alt="" />
+<code>capital and base</code>
 
 <img src="images/step1.png" width="295" height="197" alt="" />
+<code>step 1</code>
 
 <img src="images/step2.png" width="295" height="197" alt="" />
+<code>step 2</code>
 
 <img src="images/step3.png" width="295" height="197" alt="" />
+<code>step 3</code>
 
 <img src="images/step4.png" width="295" height="197" alt="" />
+<code>step 4</code>
 
 <img src="images/captop.png" width="386" height="290" alt="" />
 
 <img src="images/capbase.png" width="346" height="256" alt="" />
+<code>result</code>
 
+<img src="images/capitelli.png" width="90%" height="90%" alt="" />
+<code>capitals</code>
 </div>
 </pre>
 
-<h3>Support or Contact</h3>
+<h3>Top</h3>
 
-<p>Having trouble with Pages? Check out the documentation at <a href="http://help.github.com/pages">http://help.github.com/pages</a> or contact <a href="mailto:support@github.com">support@github.com</a> and we’ll help you sort it out.</p>
+<p>
+The top of the villa is composed by the tympanum, the roof, and the guttae ("drops"). The tympanum is modelled with 2 different profiles for the base and for the oblique sides of the triangle. This profile is
+created using NUBS and joined using BEZIER. </br>
+The roof is realized with simple TRIANGOLAR_DOMAIN such as the center of the tympanum. One gutta is created and replicated all the way around the ledge and the tympanum. It is realized with 2 SIMPLEX_GRID in order to
+fit with the profile of the ledge.
+</p>    
+        
+<pre>
+<div style="text-align: center">
+<img src="images/timpano.png" width="80%" height="80%" alt="" />
+<code>tympanum</code>
+
+<img src="images/drops.png" width="598" height="290" alt="" />
+<code>guttae</code>
+
+<img src="images/particular2.png" width="100%" height="100%" alt="" />
+
+<img src="images/particular.png" width="45%" height="50%" alt="" />      <img src="images/real_particular.png" width="40%" height="50%" alt="" />
+<code>particulars</code>
+
+<img src="images/roof.png" width="460" height="435" alt="" />
+<code>roof</code>
+
+<img src="images/top.png" width="80%" height="80%" alt="" />
+<code>result</code>
+</div>
+</pre>       
+        
+        
+<h3>Components</h3>
+
+<p>
+All other components like windows, door, chimneys are drawn in a single function. The windows and the doors are realized with SIMPLEX_GRID and POLYLINE for the grids. Below there is the final result.
+</p>    
+        
+<pre>
+<div style="text-align: center">
+<img src="images/maiddoorreal.png" width="561" height="277" alt="" />
+
+<img src="images/maindoor.png" width="258" height="421" alt="" />
+<code>main door</code>
+
+<img src="images/lodge.png" width="80%" height="80%" alt="" />
+<code>lodge</code>
+
+<img src="images/doorBelow.png" width="382" height="449" alt="" />
+<code>door</code>
+
+<img src="images/doorreal.png" width="392" height="440" alt="" />
+<code>real door</code>
+
+<img src="images/littlewind.png" width="352" height="275" alt="" />
+<code>little window</code>
+
+<img src="images/twowind.png" width="50%" height="50%" alt="" />     <img src="images/twowindreal.png" width="60%" height="60%" alt="" />
+<code>two windows</code>
+
+<img src="images/chimney.png" width="50%" height="100%" alt="" />     <img src="images/chimneyreal.png" width="25%" height="80%" alt="" />
+<code>chimneys</code>
+
+<img src="images/particulartop.png" width="50%" height="100%" alt="" />     <img src="images/particulartop2.jpg" width="50%" height="100%" alt="" />
+<code>particular</code>
+</div>
+</pre>    
+      
+      
+      <h3>Final result</h3>  
+<pre>
+<div style="text-align: center">
+<a href="images/frontal.png"><img src="images/frontal.png" width="100%" height="100%" alt="" /></a>
+<code>frontal view (click to view)</code>
+
+<img src="images/frontalreal.jpg" width="100%" height="100%" alt="" />
+
+<a href="images/oblique.png"><img src="images/oblique.png" width="100%" height="100%" alt="" /></a>
+<code>lateral view (click to view)</code>
+
+<img src="images/oblique_real.jpg" width="100%" height="100%" alt="" />
+
+<img src="images/dietro.PNG" width="100%" height="100%" alt="" />
+
+<a href="images/dietromodel.png"><img src="images/dietromodel.png" width="100%" height="100%" alt="" /></a>
+<code>behind</code>
+
+<img src="images/samemodelreal.jpg" width="100%" height="100%" alt="" />
+
+<a href="images/samemodel.png"><img src="images/samemodel.png" width="100%" height="100%" alt="" /></a>
+<code>lateral view left</code>
+
+<a href="images/final1.png"><img src="images/final1.png" width="100%" height="100%" alt="" /></a>
+
+<a href="images/final2.png"><img src="images/final2.png" width="100%" height="100%" alt="" /></a>
+
+<a href="images/final3.png"><img src="images/final3.png" width="100%" height="100%" alt="" /></a>
+
+<a href="images/final4.png"><img src="images/final4.png" width="100%" height="100%" alt="" /></a>
+
+<a href="images/final5.png"><img src="images/final5.png" width="100%" height="100%" alt="" /></a>
+
+<a href="images/final6.png"><img src="images/final6.png" width="100%" height="100%" alt="" /></a>
+
+<a href="images/final7.png"><img src="images/final7.png" width="100%" height="100%" alt="" /></a>
+
+<a href="images/final9.png"><img src="images/final9.png" width="100%" height="100%" alt="" /></a>
+
+</div>
+</pre>      
+     
+        
         </section>
 
         <footer>
