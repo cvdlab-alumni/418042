@@ -211,7 +211,11 @@ function foundation(){
 			(SIMPLEX_GRID([[-0.18*p,1.92*p],[-0.18*p,3.1*p],[-h1*p,h2*p]])).color(colors.foundation), // B
 			(SIMPLEX_GRID([[-2.24*p,0.14*p],[3.46*p],[h1*p]])).color(colors.hue), // A'
 			(SIMPLEX_GRID([[-2.1*p,0.28*p],[-0.18*p,3.1*p],[-h1*p,h2*p]])).color(colors.hue), // B'
+<<<<<<< HEAD
 			(SIMPLEX_GRID([[-2.38*p,0.32*p],[-0.86*p,1.74*p],[(h1+h2)*p]])).color(colors.hue), // C
+=======
+			(SIMPLEX_GRID([[-2.38*p,0.32*p],[-0.86*p,1.74*p],[(h1+h2)*p]])).color(colors.hue), // C da sostituire con la porta :)
+>>>>>>> bc97bba2f4924233a8386b9abe1f28e2688cbb38
 			(SIMPLEX_GRID([[-2.7*p,0.22*p],[-0.86*p,1.74*p],[(h1+h2)*p]])).color(colors.hue), // D
 			(SIMPLEX_GRID([[-3.07*p,0.27*p],[-1.05*p,1.36*p],[h1*p]])).color(colors.hue)
  		]);
@@ -2110,6 +2114,7 @@ function buildingComponents(){
 		]);
 
 	littleChimney.translate([0,1,2],[0.86*p,0.36*p,(h1+h2)*p]);
+<<<<<<< HEAD
 
 	var grass = (SIMPLEX_GRID([[4.02*p],[3.82*p],[0.005*p]])).color(colors.grass);
 	grass.translate([0,1,2],[-0.2*p,-0.2*p,-0.0025*p]);
@@ -2117,13 +2122,18 @@ function buildingComponents(){
 	var pavement = (SIMPLEX_GRID([[3.08*p],[3.46*p],[0.005*p]])).color(colors.hue);
 	var pavementfront = (SIMPLEX_GRID([[-3.08*p,0.68*p],[-0.83*p,1.74*p],[0.005*p]])).color(colors.hue);
 
+=======
+>>>>>>> bc97bba2f4924233a8386b9abe1f28e2688cbb38
 
 	return STRUCT([
 			T([0,1,2])([0.42*p,1.656*p,(h1+h2+10*hs)*p])(S([0])([-1])(middleWindow)), // central back door
 			leftComponents,
 			littleChimney,
 			bigChimney,
+<<<<<<< HEAD
 			grass, pavement, pavementfront,
+=======
+>>>>>>> bc97bba2f4924233a8386b9abe1f28e2688cbb38
 			T([1])([3.46*p])(S([1])([-1])(leftComponents))
 		]);
 
@@ -2147,11 +2157,21 @@ function drawVilla(){
 	drawer.addBuildingWall(buildingWall());
 	drawer.drawBuildingWall();
 
+
+
 	drawer.addLedge(ledge());
 	drawer.drawLedge();
 
 	drawer.addColums(colums());
 	drawer.drawColums();
+<<<<<<< HEAD
+=======
+
+	drawer.addTympanum(tympanum());
+	drawer.drawTympanum();
+
+
+>>>>>>> bc97bba2f4924233a8386b9abe1f28e2688cbb38
 
 	drawer.addTympanum(tympanum());
 	drawer.drawTympanum();
