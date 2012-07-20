@@ -180,16 +180,18 @@ function Domains(){};
 
 var domains = new Domains();
 
-domains.stepDomain 		= 	DOMAIN([[0,1],[0,1]])([10,1]);
+domains.stepDomain 		= 	DOMAIN([[0,1],[0,1]])([10,1]); //10
 domains.railTopDomain 	= 	DOMAIN([[0,1],[0,1]])([25,1]); // 20
 domains.railBaseDomain 	= 	DOMAIN([[0,1],[0,1]])([10,1]); // 10, 1
 domains.mullionDomain 	= 	DOMAIN([[0,1],[0,2*PI]])([20,10]); // 10,10 - 20,10
 domains.ledgeDomain 	= 	DOMAIN([[0,1],[0,1]])([50,1]);
-domains.columnDomain 	= 	DOMAIN([[0,1],[0,2*PI]])([60,60]);
-domains.spiralDomain 	= 	DOMAIN([[0,1],[0,1]])([50,50]);
+domains.columnDomain 	= 	DOMAIN([[0,1],[0,2*PI]])([60,60]); // 60,60
+domains.spiralDomain 	= 	DOMAIN([[0,1],[0,1]])([50,50]); //
 domains.depthCapitalDomain = DOMAIN([[0,1],[0,1]])([50,10]);
 domains.spiralCenterDomain = DOMAIN([[0,1],[0,2*PI]])([10,50]);
 domains.centerCapitalDomain = DOMAIN([[0,1],[0,1]])([20,20]);
+
+
 
 /*
     Function that generates villa's foundation
@@ -205,17 +207,17 @@ function foundation(){
 	var h2 = 0.08885;
 
 	return STRUCT([
-			COLOR(colors.foundation)(SIMPLEX_GRID([[2.24*p],[3.46*p],[h1*p]])), // A
-			COLOR(colors.foundation)(SIMPLEX_GRID([[-0.18*p,1.92*p],[-0.18*p,3.1*p],[-h1*p,h2*p]])), // B
-			COLOR(colors.hue)(SIMPLEX_GRID([[-2.24*p,0.14*p],[3.46*p],[h1*p]])), // A'
-			COLOR(colors.hue)(SIMPLEX_GRID([[-2.1*p,0.28*p],[-0.18*p,3.1*p],[-h1*p,h2*p]])), // B'
-			//COLOR(colors.hue)(SIMPLEX_GRID([[-2.38*p,0.32*p],[-0.72*p,2.02*p],[(h1+h2)*p]])), // C
-			COLOR(colors.hue)(SIMPLEX_GRID([[-2.38*p,0.32*p],[-0.86*p,1.74*p],[(h1+h2)*p]])), // C da sostituire con la porta :)
-			COLOR(colors.hue)(SIMPLEX_GRID([[-2.7*p,0.22*p],[-0.86*p,1.74*p],[(h1+h2)*p]])), // D
-			COLOR(colors.hue)(SIMPLEX_GRID([[-3.07*p,0.27*p],[-1.05*p,1.36*p],[h1*p]]))
+			(SIMPLEX_GRID([[2.24*p],[3.46*p],[h1*p]])).color(colors.foundation), // A
+			(SIMPLEX_GRID([[-0.18*p,1.92*p],[-0.18*p,3.1*p],[-h1*p,h2*p]])).color(colors.foundation), // B
+			(SIMPLEX_GRID([[-2.24*p,0.14*p],[3.46*p],[h1*p]])).color(colors.hue), // A'
+			(SIMPLEX_GRID([[-2.1*p,0.28*p],[-0.18*p,3.1*p],[-h1*p,h2*p]])).color(colors.hue), // B'
+			(SIMPLEX_GRID([[-2.38*p,0.32*p],[-0.86*p,1.74*p],[(h1+h2)*p]])).color(colors.hue), // C da sostituire con la porta :)
+			(SIMPLEX_GRID([[-2.7*p,0.22*p],[-0.86*p,1.74*p],[(h1+h2)*p]])).color(colors.hue), // D
+			(SIMPLEX_GRID([[-3.07*p,0.27*p],[-1.05*p,1.36*p],[h1*p]])).color(colors.hue)
  		]);
 
 }
+
 
 
 /*
@@ -277,6 +279,8 @@ function steps(){
     return COLOR(colors.hue)(STRUCT([frontStep,lateralStep,lateralStepRight]));
 
 }
+
+
 
 /*
 	Function that generates all other pieces componing foundations
@@ -2142,14 +2146,18 @@ function drawVilla(){
 	drawer.addBuildingWall(buildingWall());
 	drawer.drawBuildingWall();
 
+
+
 	drawer.addLedge(ledge());
 	drawer.drawLedge();
+
+	drawer.addColums(colums());
+	drawer.drawColums();
 
 	drawer.addTympanum(tympanum());
 	drawer.drawTympanum();
 
-	drawer.addColums(colums());
-	drawer.drawColums();
+
 
 	drawer.addGuttae(guttae());
 	drawer.drawGuttae();
